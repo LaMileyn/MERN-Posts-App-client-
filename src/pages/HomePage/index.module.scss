@@ -1,0 +1,12 @@
+@import "src/styles/variables";
+
+.homePage {
+  .container {
+    display: grid;
+    grid-template-columns: auto 400px;
+    gap: 2.4rem;
+    max-width: $container-width;
+    padding: 70px $container-sides-padding;
+    margin: auto;
+  }
+}

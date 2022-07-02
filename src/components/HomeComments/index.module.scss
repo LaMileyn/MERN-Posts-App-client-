@@ -1,0 +1,45 @@
+@import "src/styles/variables";
+
+.homePage__comments {
+
+  h3 {
+    font-size: 21px;
+    color: $grey-secondary;
+    margin-bottom: 24px;
+  }
+
+  background-color: white;
+  border-radius: 5px;
+  padding: 24px 22px;
+
+  .comment {
+    display: flex;
+    gap: 1rem;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(191, 191, 191, 0.42);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &__photo {
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+    }
+
+    &__authorName {
+      color: black;
+      font-weight: 500;
+    }
+
+    &__textData{
+      margin-top: 10px;
+      color: grey;
+      font-size: 14px;
+      font-weight: 400;
+    }
+  }
+}

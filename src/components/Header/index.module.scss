@@ -6,7 +6,7 @@
 
   &__container{
     max-width: $container-width;
-    padding: 15px 30px;
+    padding: 15px $container-sides-padding;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;

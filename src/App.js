@@ -4,6 +4,7 @@ import './styles/main.scss'
 import {useDispatch} from "react-redux";
 import {useEffect} from "react";
 import {fetchAllPosts} from "./store/actions/authActions";
+import HomePage from "./pages/HomePage/HomePage";
 
 const App = () => {
 
@@ -15,7 +16,7 @@ const App = () => {
         <div className="App">
             <Routes>
                 <Route path="/" element={<MainLayout />}>
-                    <Route index element={<div>Главная страница статей</div>}/>
+                    <Route index element={<HomePage/>}/>
                     <Route path="posts" element={<div>Главная страница статей</div>}/>
                     <Route path="posts/:id" element={<div>Одна статья</div>}/>
                     <Route path="add-post" element={<div>Добавление поста</div>}/>
