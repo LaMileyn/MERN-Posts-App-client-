@@ -1,0 +1,33 @@
+@import "src/styles/variables";
+
+.header{
+  background-color: white;
+
+
+  &__container{
+    max-width: $container-width;
+    padding: 15px 30px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__logo{
+    button{
+      background: black;
+      text-transform: uppercase;
+      color: white;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: $font-family-main;
+    }
+  }
+
+  &__buttons{
+    display: flex;
+    gap: 1rem;
+  }
+
+}

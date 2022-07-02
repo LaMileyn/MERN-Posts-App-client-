@@ -1,6 +1,5 @@
-import {Route, Routes} from "react-router-dom";
-import MainLayout from "./components/MainLayout/MainLayout";
-
+import logo from './logo.svg';
+import './App.css';
 
 const App = () => {
     return (
