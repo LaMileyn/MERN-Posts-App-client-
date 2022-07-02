@@ -1,8 +1,16 @@
 import {Route, Routes} from "react-router-dom";
 import MainLayout from "./components/MainLayout/MainLayout";
 import './styles/main.scss'
+import {useDispatch} from "react-redux";
+import {useEffect} from "react";
+import {fetchAllPosts} from "./store/actions/authActions";
 
 const App = () => {
+
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(fetchAllPosts())
+    },[])
     return (
         <div className="App">
             <Routes>
