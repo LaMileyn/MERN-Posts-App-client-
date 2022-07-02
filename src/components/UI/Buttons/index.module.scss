@@ -1,0 +1,27 @@
+@import "src/styles/variables";
+
+.btn{
+  padding: 7px 12px;
+  border-radius: 4px;
+  font-family: $font-family-main;
+  transition: 100ms all ease-in-out;
+  cursor: pointer;
+}
+.secondaryBtn{
+  background-color: $primary;
+  color: white;
+  border: 1px solid $primary;
+  &:hover{
+    background-color: white;
+    color: $primary;
+  }
+}
+.primaryBtn{
+  background-color: white;
+  color: $primary;
+  border: 1px solid $primary;
+  &:hover{
+    background-color: $primary;
+    color: white;
+  }
+}
