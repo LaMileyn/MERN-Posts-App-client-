@@ -7,8 +7,6 @@ import HomeComments from "../../components/HomeComments/HomeComments";
 
 const HomePage = (props) => {
 
-
-
     return (
         <section className={style.homePage}>
             <div className={style.container}>
