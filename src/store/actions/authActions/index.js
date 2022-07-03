@@ -2,10 +2,10 @@ import {createAsyncThunk} from "@reduxjs/toolkit";
 import {AuthApi} from "../../../api";
 
 
-export const fetchUserData = createAsyncThunk(
-    "auth/fetchUserData",
+export const fetchAuth = createAsyncThunk(
+    "auth/fetchAuth",
     async (params) => {
-        const {data} = await AuthApi.getUserData(params)
+        const {data} = await AuthApi.fetchAuthorization(params)
         return data
     }
 )

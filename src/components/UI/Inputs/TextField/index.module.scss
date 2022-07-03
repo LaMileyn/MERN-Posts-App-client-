@@ -1,22 +1,43 @@
 @import "src/styles/variables";
-.textField{
+
+.textField {
   width: 100%;
-  .label{
+
+  .label {
     margin-bottom: 10px;
   }
-  .input{
+
+  .input {
     border: 2px solid rgba(151, 151, 151, 0.23);
     padding: 10px 15px;
     width: 100%;
     border-radius: 3px;
     transition: 100ms all ease-in;
     font-family: $font-family-main;
-    &::placeholder{
+
+    &.error {
+      &:focus {
+        border: 2px solid #cd5050;
+      }
+      border: 2px solid #cd5050;
+    }
+
+    &::placeholder {
       color: gray;
     }
-    &:focus{
+
+    &:focus {
       border: 2px solid $primary;
     }
   }
 
+  .errorMessage {
+    color: #cd5050;
+    font-size: 13px;
+    margin: 5px 0 0 5px;
+  }
+}
+
+.error {
+  color: #cd5050;
 }

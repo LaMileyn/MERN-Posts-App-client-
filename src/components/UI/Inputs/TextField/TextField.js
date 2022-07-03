@@ -1,27 +1,35 @@
 import React, {useState} from 'react';
 import style from './index.module.scss';
+import cn from 'classnames'
 
-const TextField = ({label, isError, errorMessage, defaultValue, ...props}) => {
+const TextField = React.forwardRef(({label, isError, errorMessage, defaultValue, ...props}, ref) => {
 
-    const [error, setError] = useState(isError || false)
-    const [errorText, setErrorMessage] = useState(errorMessage || "")
     const [value, setValue] = useState(defaultValue || "")
-    return (
+
+    const inputHandleChange = (value) =>{
+        setValue(value);
+        if ( props.clearErrors ){
+            props.clearErrors(props.name)
+        }
+    }
+
+    return(
         <div className={style.textField}>
-            <div className={style.label}>{label}</div>
-            <input className={style.input}
+            <div className={cn(style.label,{ [style.error] : isError})}>{label}</div>
+            <input className={cn(style.input, { [style.error] : isError })}
+                   ref = {ref}
                    {...props}
                    value={value}
-                   onChange={(e) => setValue(e.currentTarget.value)}/>
+                   onChange={(e) => inputHandleChange(e.currentTarget.value)}/>
             {
-                error && (
+                isError && (
                     <div className={style.errorMessage}>
-                        {errorText}
+                        {errorMessage}
                     </div>
                 )
             }
         </div>
-    );
-}
+        )
+});
 
 export default TextField;

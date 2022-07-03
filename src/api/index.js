@@ -14,7 +14,7 @@ export class PostsApi{
     }
 }
 export class AuthApi{
-    static async getUserData(data){
+    static async fetchAuthorization(data){
         return await instance.post(`/auth/login`, data)
     }
 }

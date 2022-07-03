@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {fetchUserData} from "../actions/authActions";
+import {fetchAuth} from "../actions/authActions";
 
 
 const initialState = {
@@ -12,15 +12,15 @@ const authSlice = createSlice({
     initialState,
     reducers : {},
     extraReducers: {
-        [fetchUserData.pending]  : ( state ) =>{
+        [fetchAuth.pending]  : ( state ) =>{
             state.status = "loading"
             state.data = null
         },
-        [fetchUserData.fulfilled]  : ( state, action ) =>{
+        [fetchAuth.fulfilled]  : ( state, action ) =>{
             state.status = "loaded"
             state.data = action.payload
         },
-        [fetchUserData.rejected]  : ( state ) =>{
+        [fetchAuth.rejected]  : ( state ) =>{
             state.status = "error"
             state.data = null
 
