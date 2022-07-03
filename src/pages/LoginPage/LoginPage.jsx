@@ -62,7 +62,7 @@ const LoginPage = (props) => {
                         />
                     </div>
                     <div className={style.btnSubmit}>
-                        <ButtonSecondary type="submit">
+                        <ButtonSecondary disabled={!isValid} type="submit">
                             Войти
                         </ButtonSecondary>
                     </div>

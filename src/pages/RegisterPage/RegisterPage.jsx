@@ -3,17 +3,35 @@ import style from './index.module.scss'
 import TextField from "../../components/UI/Inputs/TextField/TextField";
 import {useForm} from "react-hook-form";
 import ButtonSecondary from "../../components/UI/Buttons/ButtonSecondary";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchRegister} from "../../store/actions/authActions";
+import {Navigate} from "react-router-dom";
 
 const RegisterPage = (props) => {
-
+    const isAuth = useSelector(state => Boolean(state.auth.data))
+    const dispatch = useDispatch()
     const {
         register, handleSubmit, watch, clearErrors,
         formState: {errors, isValid}
     } = useForm({
         mode: "all"
     })
-    const submitHandler = (value) =>{
-        console.log(value)
+
+    const submitHandler = async (values) => {
+        console.log(values)
+        const data = await dispatch(fetchRegister(values))
+        console.log(data)
+        if (!data.payload) {
+            return alert("Не удалось зарегестрироваться")
+        }
+        if ("token" in data.payload) {
+            window.localStorage.setItem("token", data.payload.token)
+        }
+    }
+
+
+    if (isAuth) {
+        return <Navigate to="/"/>
     }
 
     return (
@@ -64,8 +82,8 @@ const RegisterPage = (props) => {
                         />
                     </div>
                     <div className={style.btnSubmit}>
-                        <ButtonSecondary type="submit">
-                            Войти
+                        <ButtonSecondary disabled={!isValid} type="submit">
+                            Зарегистрироваться
                         </ButtonSecondary>
                     </div>
                 </form>

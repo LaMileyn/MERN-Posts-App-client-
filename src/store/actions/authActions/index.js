@@ -17,3 +17,11 @@ export const fetchAuth = createAsyncThunk(
         return data
     }
 )
+
+export const fetchRegister = createAsyncThunk(
+    "auth/fetchRegister",
+    async (values) => {
+        const {data} = await AuthApi.register(values)
+        return data
+    }
+)

@@ -4,6 +4,10 @@
   max-width: $container-width;
   padding: 100px $container-sides-padding;
   margin: auto;
+  @media only screen and (max-width: 520px){
+    max-width: none;
+    padding: 100px 0;
+  }
 }
 
 .form {
@@ -17,6 +21,11 @@
   flex-direction: column;
   align-items: center;
   padding: 70px 50px;
+
+  @media only screen and (max-width: 520px){
+    width: 100%;
+    max-width: 100%;
+  }
 
   h2 {
     text-align: center;
@@ -41,6 +50,6 @@
 
 .btnSubmit {
   margin-top: 40px;
-  height: 40px;
+  height: 48px;
   width: 100%;
 }
