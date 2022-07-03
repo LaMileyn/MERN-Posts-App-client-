@@ -36,7 +36,9 @@ const Header = (props) => {
                     {isAuth &&
                         (
                             <>
-                                <ButtonPrimary>Написать пост</ButtonPrimary>
+                                <Link to="/add-post">
+                                    <ButtonPrimary>Написать пост</ButtonPrimary>
+                                </Link>
                                 <ButtonSecondary onClick={() => {
                                     if (window.confirm("Вы действительно хотите выйти")) {
                                         dispatch(logout())

@@ -55,7 +55,6 @@ const Post = ({data, noLink, isOwner}) => {
                                     ? data.text
                                     : <Link to={`/posts/${data._id}`}>{data.text}</Link>
                             }
-
                         </div>
                         <div className={style.post__tags}>
                             {
