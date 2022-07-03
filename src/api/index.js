@@ -9,4 +9,9 @@ export class PostsApi{
     static async getPosts(){
         return instance.get("/posts")
     }
+    static async getOnePost(id){
+        const data = await instance.get(`/posts/${id}`)
+        console.log(data)
+        return data
+    }
 }

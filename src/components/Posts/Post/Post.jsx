@@ -2,15 +2,25 @@ import React from 'react';
 import views from "../../../assets/icons/view.png";
 import comments from "../../../assets/icons/commentt.png";
 import style from './index.module.scss'
+import {Link} from "react-router-dom";
+import cn from 'classnames';
+import close from '../../../assets/icons/close.png'
+import edit from '../../../assets/icons/edit.png'
 
-const Post = ({ data }) => {
+const Post = ({data, noLink}) => {
+
+    if (!data) return "Loading..."
     return (
-        <div className={style.post}>
-            <div className={style.post__image}>
-                <img
-                    src="https://img.desktopwallpapers.ru/rocks/pics/wide/1920x1200/27640f370156a0e0ae3ee9608fc8480a.jpg"
-                    alt=""/>
-            </div>
+        <div className={cn(style.post,{ [style.hoveredPost] : !noLink  })}>
+            {
+                data.imageUrl && (
+                    <div className={style.post__image}>
+                        <img
+                            src={data.imageUrl}
+                            alt=""/>
+                    </div>
+                )
+            }
             <div className={style.post__details}>
                 <div className={style.post__authorImage}>
                     <img
@@ -19,12 +29,31 @@ const Post = ({ data }) => {
                 </div>
                 <div className={style.post__textAndIcons}>
                     <div className={style.post__text}>
-                        <div className={style.post__authorName}>{ data.user.fullName}</div>
-                        <div className={style.post__date}>{ data.createdAt}</div>
-                        <div className={style.post__title}>{ data.text}</div>
+                        <div className={style.post__controlsAndTitles}>
+                            <div className={style.post__titles}>
+                                <div className={style.post__authorName}>{data.user.fullName}</div>
+                                <div className={style.post__date}>{data.createdAt}</div>
+                            </div>
+                            <div className={style.post__controls}>
+                                <div className={cn(style.iconControl)}>
+                                    <img src={edit} alt=""/>
+                                </div>
+                                <div className={cn(style.iconControl)}>
+                                    <img src={close} alt=""/>
+                                </div>
+                            </div>
+                        </div>
+                        <div className={style.post__title}>
+                            {
+                                noLink
+                                    ? data.text
+                                    : <Link to={`/posts/${data._id}`}>{data.text}</Link>
+                            }
+
+                        </div>
                         <div className={style.post__tags}>
                             {
-                                data.tags.map( (tag,index) => (
+                                data.tags.map((tag, index) => (
                                     <div key={index} className={style.tag}>#{tag}</div>
                                 ))
                             }
