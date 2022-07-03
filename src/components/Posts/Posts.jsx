@@ -19,7 +19,7 @@ const Posts = (props) => {
         <div className={style.posts}>
             {
                 data.map(  post => (
-                    <Post key={post._id} data={post} isOwner={userData._id === post._id}/>
+                    <Post key={post._id} data={post} isOwner={userData?._id === post._id}/>
                 ))
             }
         </div>

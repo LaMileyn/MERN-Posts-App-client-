@@ -6,6 +6,7 @@ import {Link} from "react-router-dom";
 import cn from 'classnames';
 import close from '../../../assets/icons/close.png'
 import edit from '../../../assets/icons/edit.png'
+import {baseURL} from "../../../api";
 
 const Post = ({data, noLink, isOwner}) => {
 
@@ -16,7 +17,7 @@ const Post = ({data, noLink, isOwner}) => {
                 data.imageUrl && (
                     <div className={style.post__image}>
                         <img
-                            src={data.imageUrl}
+                            src={baseURL+data.imageUrl}
                             alt=""/>
                     </div>
                 )
@@ -55,7 +56,6 @@ const Post = ({data, noLink, isOwner}) => {
                                     ? data.text
                                     : <Link to={`/posts/${data._id}`}>{data.text}</Link>
                             }
-
                         </div>
                         <div className={style.post__tags}>
                             {

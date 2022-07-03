@@ -14,6 +14,11 @@ const RegisterPage = (props) => {
         register, handleSubmit, watch, clearErrors,
         formState: {errors, isValid}
     } = useForm({
+        defaultValues : {
+            email : "admin@mail.ru",
+            fullName : "Дмитрий",
+            password : "123456789"
+        },
         mode: "all"
     })
 
@@ -49,7 +54,6 @@ const RegisterPage = (props) => {
                             name={"fullName"}
                             clearErrors={clearErrors}
                             placeholder={"Введите имя"}
-                            defaultValue={"Amir Ryasancec"}
                             errorMessage={errors.fullName?.message}
                             isError={errors.fullName?.message}
                             {...register("fullName", {required: "Укажите имя"})}
@@ -62,7 +66,6 @@ const RegisterPage = (props) => {
                             name={"email"}
                             clearErrors={clearErrors}
                             placeholder={"Введите email"}
-                            defaultValue={"admin@mail.ru"}
                             errorMessage={errors.email?.message}
                             isError={errors.email?.message}
                             {...register("email", {required: "Укажите почту"})}
@@ -71,7 +74,6 @@ const RegisterPage = (props) => {
                     <div className={style.input}>
                         <TextField
                             type={"password"}
-                            defaultValue={"123456789"}
                             clearErrors={clearErrors}
                             name={"password"}
                             label={"Пароль"}

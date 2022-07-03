@@ -1,8 +1,8 @@
 import axios from "axios";
 
-
+export const baseURL = "http://localhost:5000"
 const instance = axios.create({
-    baseURL : "http://localhost:5000",
+    baseURL,
     params : {}
 })
 // middleWare
@@ -20,6 +20,9 @@ export class PostsApi{
     static async getOnePost(id){
         return await instance.get(`/posts/${id}`)
     }
+    static async addPost(data){
+        return await instance.post(`/posts`,data)
+    }
 }
 export class AuthApi{
     static async login(data){
@@ -30,5 +33,10 @@ export class AuthApi{
     }
     static async authMe(){
         return await instance.get("/auth/me")
+    }
+}
+export class UploadApi{
+    static async getImage(data){
+        return await instance.post("/upload",data)
     }
 }

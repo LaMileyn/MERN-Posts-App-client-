@@ -1,0 +1,43 @@
+@import "src/styles/variables";
+
+.addPost{
+  .container{
+    max-width: $container-width;
+    padding: 60px 30px;
+    margin: 70px auto;
+    background-color: white;
+  }
+  .add{
+    margin-bottom: 25px;
+  }
+  .btnLoad{
+    height: 60px;
+  }
+  .delImgBtn{
+    margin-top: 15px;
+    height: 45px;
+  }
+  .postImg{
+    height: 500px;
+    margin-top: 25px;
+    img{
+      border-radius: 4px;
+    }
+  }
+  textarea{
+    resize: none;
+    width: 100%;
+    margin-top: 15px;
+    border: none;
+    font-size: 20px;
+    min-height: 500px;
+    padding: 20px 15px;
+  }
+  .buttons{
+    display: flex;
+    gap: 1rem;
+    .btn{
+      height: 50px;
+    }
+  }
+}
