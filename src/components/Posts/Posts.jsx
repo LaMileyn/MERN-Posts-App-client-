@@ -15,11 +15,12 @@ const Posts = (props) => {
     },[dispatch])
 
     if ( status === "loading" ) return <div>Loading..</div>
+    console.log(userData?._id)
     return (
         <div className={style.posts}>
             {
                 data.map(  post => (
-                    <Post key={post._id} data={post} isOwner={userData?._id === post._id}/>
+                    <Post key={post._id} data={post} isOwner={userData?._id === post.user._id}/>
                 ))
             }
         </div>

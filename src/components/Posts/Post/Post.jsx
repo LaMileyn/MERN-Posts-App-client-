@@ -9,7 +9,6 @@ import edit from '../../../assets/icons/edit.png'
 import {baseURL} from "../../../api";
 
 const Post = ({data, noLink, isOwner}) => {
-
     if (!data) return "Loading..."
     return (
         <div className={cn(style.post,{ [style.hoveredPost] : !noLink  })}>
