@@ -7,7 +7,7 @@ import cn from 'classnames';
 import close from '../../../assets/icons/close.png'
 import edit from '../../../assets/icons/edit.png'
 
-const Post = ({data, noLink}) => {
+const Post = ({data, noLink, isOwner}) => {
 
     if (!data) return "Loading..."
     return (
@@ -34,14 +34,20 @@ const Post = ({data, noLink}) => {
                                 <div className={style.post__authorName}>{data.user.fullName}</div>
                                 <div className={style.post__date}>{data.createdAt}</div>
                             </div>
-                            <div className={style.post__controls}>
-                                <div className={cn(style.iconControl)}>
-                                    <img src={edit} alt=""/>
-                                </div>
-                                <div className={cn(style.iconControl)}>
-                                    <img src={close} alt=""/>
-                                </div>
-                            </div>
+                            {/* only if its an owner */}
+                            { isOwner &&
+                                (
+                                    <div className={style.post__controls}>
+                                        <div className={cn(style.iconControl)}>
+                                            <img src={edit} alt=""/>
+                                        </div>
+                                        <div className={cn(style.iconControl)}>
+                                            <img src={close} alt=""/>
+                                        </div>
+                                    </div>
+                                )}
+                            {/* only if its an owner */}
+
                         </div>
                         <div className={style.post__title}>
                             {

@@ -6,7 +6,9 @@ import {fetchAllPosts} from "../../store/actions/postActions";
 
 
 const Posts = (props) => {
-    const { posts : { items : { data }, status } }  = useSelector( state => state.posts)
+    const { posts : { items : { data }, status } }  = useSelector( state => state.posts )
+    const userData = useSelector( state => state.auth.data )
+
     const dispatch = useDispatch()
     useEffect( () => {
         dispatch(fetchAllPosts())
@@ -17,7 +19,7 @@ const Posts = (props) => {
         <div className={style.posts}>
             {
                 data.map(  post => (
-                    <Post key={post._id} data={post}/>
+                    <Post key={post._id} data={post} isOwner={userData._id === post._id}/>
                 ))
             }
         </div>
