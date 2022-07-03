@@ -25,6 +25,9 @@ export class AuthApi{
     static async login(data){
         return await instance.post(`/auth/login`, data)
     }
+    static async register(data){
+        return await instance.post(`/auth/register`, data)
+    }
     static async authMe(){
         return await instance.get("/auth/me")
     }
