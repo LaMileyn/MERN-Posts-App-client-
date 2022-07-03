@@ -28,7 +28,7 @@ const Header = (props) => {
                                     </ButtonPrimary>
                                 </Link>
                                 <Link to="/register">
-                                    <ButtonSecondary>Зарегестрироваться</ButtonSecondary>
+                                    <ButtonSecondary>Создать аккаунт</ButtonSecondary>
                                 </Link>
                             </>
                         )
