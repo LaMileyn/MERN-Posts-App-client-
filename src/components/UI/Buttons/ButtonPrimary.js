@@ -4,7 +4,7 @@ import cl from 'classnames'
 
 const ButtonPrimary = ({ children ,...props}) => {
     return (
-        <button className={cl(style.primaryBtn,style.btn)}>
+        <button className={cl(style.primaryBtn,style.btn)} {...props}>
             {children}
         </button>
     );

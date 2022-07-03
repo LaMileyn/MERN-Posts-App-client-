@@ -2,9 +2,12 @@
 
 .btn{
   padding: 7px 12px;
+  width: 100%;
+  height: 100%;
   border-radius: 4px;
   font-family: $font-family-main;
   transition: 100ms all ease-in-out;
+  white-space: nowrap;
   cursor: pointer;
 }
 .secondaryBtn{
