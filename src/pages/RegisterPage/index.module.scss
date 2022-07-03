@@ -1,0 +1,55 @@
+@import "src/styles/variables";
+
+.container {
+  max-width: $container-width;
+  padding: 100px $container-sides-padding;
+  margin: auto;
+  @media only screen and (max-width: 520px){
+    max-width: none;
+    padding: 100px 0;
+  }
+}
+
+.form {
+  width: 500px;
+  max-width: 90%;
+  margin: auto;
+  background-color: white;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 70px 50px;
+
+  @media only screen and (max-width: 520px){
+    width: 100%;
+    max-width: 100%;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 29px;
+    margin-bottom: 30px;
+  }
+}
+
+.image {
+  width: 160px;
+  height: 160px;
+  margin-bottom: 30px;
+  img {
+    border-radius: 50%;
+  }
+}
+
+.input {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.btnSubmit {
+  margin-top: 40px;
+  height: 48px;
+  width: 100%;
+}

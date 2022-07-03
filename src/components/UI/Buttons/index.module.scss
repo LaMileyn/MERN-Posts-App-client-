@@ -9,6 +9,17 @@
   transition: 100ms all ease-in-out;
   white-space: nowrap;
   cursor: pointer;
+  &:disabled{
+    cursor: not-allowed;
+    background-color: #d9d9d9;
+    border: 2px solid #d9d9d9 ;
+    color: grey;
+    &:hover{
+      background-color: #d9d9d9;
+      border: 2px solid #d9d9d9 ;
+      color: grey;
+    }
+  }
 }
 .secondaryBtn{
   background-color: $primary;

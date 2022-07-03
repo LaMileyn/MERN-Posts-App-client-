@@ -7,6 +7,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {fetchAuth} from "./store/actions/authActions";
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
 
 const App = () => {
 
@@ -25,7 +26,7 @@ const App = () => {
                     <Route path="posts/:id" element={<PostPage />}/>
                     <Route path="add-post" element={<div>Добавление поста</div>}/>
                     <Route path="login" element={<LoginPage/>}/>
-                    <Route path="register" element={<div>Регистрация</div>}/>
+                    <Route path="register" element={<RegisterPage/>}/>
                 </Route>
                 <Route path="*" element={<div>404 - страница не найдена</div>}/>
             </Routes>

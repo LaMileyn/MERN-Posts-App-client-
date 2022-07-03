@@ -33,7 +33,7 @@ const LoginPage = (props) => {
     return (
         <section className={style.loginPage}>
             <div className={style.container}>
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form className={style.form} onSubmit={handleSubmit(onSubmit)}>
                     <h2>Вход в аккаунт</h2>
                     <div className={style.input}>
                         <TextField
@@ -62,7 +62,7 @@ const LoginPage = (props) => {
                         />
                     </div>
                     <div className={style.btnSubmit}>
-                        <ButtonSecondary type="submit">
+                        <ButtonSecondary disabled={!isValid} type="submit">
                             Войти
                         </ButtonSecondary>
                     </div>

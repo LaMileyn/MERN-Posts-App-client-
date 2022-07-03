@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {fetchAuth, fetchLogin} from "../actions/authActions";
+import {fetchAuth, fetchLogin, fetchRegister} from "../actions/authActions";
 
 
 const initialState = {
@@ -49,6 +49,23 @@ const authSlice = createSlice({
 
         },
         //------------ auth
+
+
+        //------------ register
+        [fetchRegister.pending]  : ( state ) =>{
+            state.status = "loading"
+            state.data = null
+        },
+        [fetchRegister.fulfilled]  : ( state, action ) =>{
+            state.status = "loaded"
+            state.data = action.payload
+        },
+        [fetchRegister.rejected]  : ( state ) =>{
+            state.status = "error"
+            state.data = null
+        },
+        //------------ register
+
     }
 })
 
