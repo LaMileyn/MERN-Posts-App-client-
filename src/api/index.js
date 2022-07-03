@@ -5,6 +5,14 @@ const instance = axios.create({
     baseURL : "http://localhost:5000",
     params : {}
 })
+// middleWare
+
+instance.interceptors.request.use( (config) => {
+    config.headers.Authorization = window.localStorage.getItem("token")
+    return config
+})
+
+// middleWare
 export class PostsApi{
     static async getPosts(){
         return instance.get("/posts")
@@ -14,7 +22,10 @@ export class PostsApi{
     }
 }
 export class AuthApi{
-    static async fetchAuthorization(data){
+    static async login(data){
         return await instance.post(`/auth/login`, data)
+    }
+    static async authMe(){
+        return await instance.get("/auth/me")
     }
 }

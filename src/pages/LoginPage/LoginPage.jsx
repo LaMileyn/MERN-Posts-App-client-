@@ -2,26 +2,32 @@ import React from 'react';
 import style from './index.module.scss'
 import TextField from "../../components/UI/Inputs/TextField/TextField";
 import ButtonSecondary from "../../components/UI/Buttons/ButtonSecondary";
-import { Navigate } from "react-router-dom";
+import {Navigate} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchAuth} from "../../store/actions/authActions";
+import {fetchLogin} from "../../store/actions/authActions";
 
 const LoginPage = (props) => {
-    const isAuth = useSelector( state => Boolean(state.auth.data))
+    const isAuth = useSelector(state => Boolean(state.auth.data))
     const {
         register, handleSubmit, watch, clearErrors,
         formState: {errors, isValid}
     } = useForm({
-        mode: "onChange"
+        mode: "all"
     })
 
     const dispatch = useDispatch()
-    const onSubmit = (values) => {
-        dispatch(fetchAuth(values))
+    const onSubmit = async (values) => {
+        const data = await dispatch(fetchLogin(values))
+        if (!data.payload) {
+            return alert("Не удалось авторизоваться")
+        }
+        if ("token" in data.payload) {
+            window.localStorage.setItem("token", data.payload.token)
+        }
     }
 
-    if (isAuth){
+    if (isAuth) {
         return <Navigate to="/"/>
     }
     return (
@@ -30,30 +36,29 @@ const LoginPage = (props) => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <h2>Вход в аккаунт</h2>
                     <div className={style.input}>
-                        {/*<input type="email" name="email" ref={register}/>*/}
                         <TextField
                             type={"email"}
                             label={"Email"}
                             name={"email"}
-                            clearErrors = {clearErrors}
+                            clearErrors={clearErrors}
                             placeholder={"Введите email"}
                             defaultValue={"admin@mail.ru"}
                             errorMessage={errors.email?.message}
                             isError={errors.email?.message}
-                            {...register("email", { required : "Укажите почту"})}
+                            {...register("email", {required: "Укажите почту"})}
                         />
                     </div>
                     <div className={style.input}>
                         <TextField
                             type={"password"}
                             defaultValue={"123456789"}
-                            clearErrors = {clearErrors}
+                            clearErrors={clearErrors}
                             name={"password"}
                             label={"Пароль"}
                             placeholder={"Введите пароль"}
                             errorMessage={errors.password?.message}
                             isError={Boolean(errors.password?.message)}
-                            {...register("password", { required : "Введите пароль"})}
+                            {...register("password", {required: "Введите пароль"})}
                         />
                     </div>
                     <div className={style.btnSubmit}>

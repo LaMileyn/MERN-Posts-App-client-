@@ -3,12 +3,13 @@ import style from './index.module.scss'
 import ButtonPrimary from "../UI/Buttons/ButtonPrimary";
 import ButtonSecondary from "../UI/Buttons/ButtonSecondary";
 import {Link} from "react-router-dom";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {logout} from "../../store/slices/auth";
 
 
 const Header = (props) => {
-    const isAuth = useSelector( state => Boolean(state.auth.data))
-    console.log(isAuth)
+    const isAuth = useSelector(state => Boolean(state.auth.data))
+    const dispatch = useDispatch()
     return (
         <section className={style.header}>
             <div className={style.header__container}>
@@ -21,7 +22,11 @@ const Header = (props) => {
                     {!isAuth &&
                         (
                             <>
-                                <ButtonPrimary>Войти</ButtonPrimary>
+                                <Link to="/login">
+                                    <ButtonPrimary>
+                                        Войти
+                                    </ButtonPrimary>
+                                </Link>
                                 <ButtonSecondary>Зарегестрироваться</ButtonSecondary>
                             </>
                         )
@@ -30,7 +35,12 @@ const Header = (props) => {
                         (
                             <>
                                 <ButtonPrimary>Написать пост</ButtonPrimary>
-                                <ButtonSecondary>Выйти</ButtonSecondary>
+                                <ButtonSecondary onClick={() => {
+                                    if (window.confirm("Вы действительно хотите выйти")) {
+                                        dispatch(logout())
+                                        window.localStorage.removeItem("token")
+                                    }
+                                }}>Выйти</ButtonSecondary>
                             </>
                         )
                     }

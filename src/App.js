@@ -4,10 +4,18 @@ import './styles/main.scss'
 import HomePage from "./pages/HomePage/HomePage";
 import PostPage from "./pages/PostPage/PostPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect} from "react";
+import {fetchAuth} from "./store/actions/authActions";
 
 const App = () => {
 
+    const isAuth = useSelector(state => Boolean(state.auth.data))
+    const dispatch = useDispatch()
 
+    useEffect( () => {
+        dispatch(fetchAuth())
+    },[dispatch])
     return (
         <div className="App">
             <Routes>

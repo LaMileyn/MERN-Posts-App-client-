@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {fetchAuth} from "../actions/authActions";
+import {fetchAuth, fetchLogin} from "../actions/authActions";
 
 
 const initialState = {
@@ -10,8 +10,31 @@ const initialState = {
 const authSlice = createSlice({
     name : "auth",
     initialState,
-    reducers : {},
+    reducers : {
+        logout : (state,action) =>{
+            state.data = null
+        }
+
+    },
     extraReducers: {
+
+        //------------ login
+        [fetchLogin.pending]  : ( state ) =>{
+            state.status = "loading"
+            state.data = null
+        },
+        [fetchLogin.fulfilled]  : ( state, action ) =>{
+            state.status = "loaded"
+            state.data = action.payload
+        },
+        [fetchLogin.rejected]  : ( state ) =>{
+            state.status = "error"
+            state.data = null
+
+        },
+        //------------ login
+
+        //------------ auth
         [fetchAuth.pending]  : ( state ) =>{
             state.status = "loading"
             state.data = null
@@ -25,8 +48,9 @@ const authSlice = createSlice({
             state.data = null
 
         },
+        //------------ auth
     }
 })
 
-export const { } = authSlice.actions
+export const { logout } = authSlice.actions
 export const authReducer = authSlice.reducer
