@@ -2,20 +2,17 @@ import React from 'react';
 import style from './index.module.scss'
 import TextField from "../../components/UI/Inputs/TextField/TextField";
 import ButtonSecondary from "../../components/UI/Buttons/ButtonSecondary";
+import { Navigate } from "react-router-dom";
 import {useForm} from "react-hook-form";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {fetchAuth} from "../../store/actions/authActions";
 
 const LoginPage = (props) => {
-
+    const isAuth = useSelector( state => Boolean(state.auth.data))
     const {
         register, handleSubmit, watch, clearErrors,
         formState: {errors, isValid}
     } = useForm({
-        defaultValues: {
-            email: "",
-            password: ""
-        },
         mode: "onChange"
     })
 
@@ -24,18 +21,23 @@ const LoginPage = (props) => {
         dispatch(fetchAuth(values))
     }
 
+    if (isAuth){
+        return <Navigate to="/"/>
+    }
     return (
         <section className={style.loginPage}>
             <div className={style.container}>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <h2>Вход в аккаунт</h2>
                     <div className={style.input}>
+                        {/*<input type="email" name="email" ref={register}/>*/}
                         <TextField
                             type={"email"}
                             label={"Email"}
                             name={"email"}
                             clearErrors = {clearErrors}
                             placeholder={"Введите email"}
+                            defaultValue={"admin@mail.ru"}
                             errorMessage={errors.email?.message}
                             isError={errors.email?.message}
                             {...register("email", { required : "Укажите почту"})}
@@ -44,6 +46,7 @@ const LoginPage = (props) => {
                     <div className={style.input}>
                         <TextField
                             type={"password"}
+                            defaultValue={"123456789"}
                             clearErrors = {clearErrors}
                             name={"password"}
                             label={"Пароль"}

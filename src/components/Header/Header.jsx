@@ -3,10 +3,12 @@ import style from './index.module.scss'
 import ButtonPrimary from "../UI/Buttons/ButtonPrimary";
 import ButtonSecondary from "../UI/Buttons/ButtonSecondary";
 import {Link} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 
 const Header = (props) => {
-    const isAuth = true
+    const isAuth = useSelector( state => Boolean(state.auth.data))
+    console.log(isAuth)
     return (
         <section className={style.header}>
             <div className={style.header__container}>

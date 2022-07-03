@@ -4,7 +4,7 @@ import cn from 'classnames'
 
 const TextField = React.forwardRef(({label, isError, errorMessage, defaultValue, ...props}, ref) => {
 
-    const [value, setValue] = useState(defaultValue || "")
+    const [value, setValue] = useState( defaultValue || "")
 
     const inputHandleChange = (value) =>{
         setValue(value);
