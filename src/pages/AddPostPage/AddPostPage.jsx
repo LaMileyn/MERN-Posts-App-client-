@@ -31,6 +31,7 @@ const AddPostPage = (props) => {
     const navigate = useNavigate()
     const submitData = async () =>{
         try {
+            console.log(inputsData.tags)
             const fields = {
                 title : inputsData.title,
                 text  : inputsData.mainText,
@@ -78,7 +79,9 @@ const AddPostPage = (props) => {
                     <div className={style.add}>
                         <div className={style.label}>Тэги</div>
                         <TextField value={inputsData.tags}
-                                   onChange={(e) => setInputsData({...inputsData, tags: e.currentTarget.value})}
+                                   onChange={(e) => {
+                                       setInputsData({...inputsData, tags:  e.currentTarget.value.split(" ").join(",")})
+                                   }}
                                    type="text" placeholder={"Тэги"}/>
                     </div>
                     <div className={style.add}>
