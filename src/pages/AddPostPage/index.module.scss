@@ -10,6 +10,20 @@
   .add{
     margin-bottom: 25px;
   }
+  .btnLoad{
+    height: 60px;
+  }
+  .delImgBtn{
+    margin-top: 15px;
+    height: 45px;
+  }
+  .postImg{
+    height: 500px;
+    margin-top: 25px;
+    img{
+      border-radius: 4px;
+    }
+  }
   textarea{
     resize: none;
     width: 100%;
