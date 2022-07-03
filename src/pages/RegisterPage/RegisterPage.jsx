@@ -3,7 +3,9 @@ import style from './index.module.scss'
 
 const RegisterPage = (props) => {
     return (
-        <div></div>
+        <section className={style.registrationPage}>
+
+        </section>
     );
 }
 
