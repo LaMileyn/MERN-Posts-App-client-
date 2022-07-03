@@ -13,6 +13,10 @@ const LoginPage = (props) => {
         register, handleSubmit, watch, clearErrors,
         formState: {errors, isValid}
     } = useForm({
+        defaultValues : {
+            email : "admin@mail.ru",
+            password : "123456789"
+        },
         mode: "all"
     })
 
@@ -42,7 +46,6 @@ const LoginPage = (props) => {
                             name={"email"}
                             clearErrors={clearErrors}
                             placeholder={"Введите email"}
-                            defaultValue={"admin@mail.ru"}
                             errorMessage={errors.email?.message}
                             isError={errors.email?.message}
                             {...register("email", {required: "Укажите почту"})}
@@ -51,7 +54,6 @@ const LoginPage = (props) => {
                     <div className={style.input}>
                         <TextField
                             type={"password"}
-                            defaultValue={"123456789"}
                             clearErrors={clearErrors}
                             name={"password"}
                             label={"Пароль"}
