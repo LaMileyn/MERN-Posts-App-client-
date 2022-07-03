@@ -10,8 +10,11 @@ export class PostsApi{
         return instance.get("/posts")
     }
     static async getOnePost(id){
-        const data = await instance.get(`/posts/${id}`)
-        console.log(data)
-        return data
+        return await instance.get(`/posts/${id}`)
+    }
+}
+export class AuthApi{
+    static async getUserData(data){
+        return await instance.post(`/auth/login`, data)
     }
 }

@@ -3,6 +3,7 @@ import MainLayout from "./components/MainLayout/MainLayout";
 import './styles/main.scss'
 import HomePage from "./pages/HomePage/HomePage";
 import PostPage from "./pages/PostPage/PostPage";
+import LoginPage from "./pages/LoginPage/LoginPage";
 
 const App = () => {
 
@@ -15,7 +16,7 @@ const App = () => {
                     <Route path="posts" element={<div>Главная страница статей</div>}/>
                     <Route path="posts/:id" element={<PostPage />}/>
                     <Route path="add-post" element={<div>Добавление поста</div>}/>
-                    <Route path="login" element={<div>Логин</div>}/>
+                    <Route path="login" element={<LoginPage/>}/>
                     <Route path="register" element={<div>Регистрация</div>}/>
                 </Route>
                 <Route path="*" element={<div>404 - страница не найдена</div>}/>
