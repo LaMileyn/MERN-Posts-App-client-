@@ -7,16 +7,29 @@ import cn from 'classnames';
 import close from '../../../assets/icons/close.png'
 import edit from '../../../assets/icons/edit.png'
 import {baseURL} from "../../../api";
+import {useDispatch} from "react-redux";
+import {fetchDeletePost} from "../../../store/actions/postActions";
 
 const Post = ({data, noLink, isOwner}) => {
+
+    const dispatch = useDispatch()
+
+
+    const clickDeleteHandler = () =>{
+        if (window.confirm("Вы действительно хотите удалить пост?")) {
+            dispatch(fetchDeletePost(data._id))
+        }
+    }
+
     if (!data) return "Loading..."
+
     return (
-        <div className={cn(style.post,{ [style.hoveredPost] : !noLink  })}>
+        <div className={cn(style.post, {[style.hoveredPost]: !noLink})}>
             {
                 data.imageUrl && (
                     <div className={style.post__image}>
                         <img
-                            src={baseURL+data.imageUrl}
+                            src={baseURL + data.imageUrl}
                             alt=""/>
                     </div>
                 )
@@ -35,13 +48,13 @@ const Post = ({data, noLink, isOwner}) => {
                                 <div className={style.post__date}>{data.createdAt}</div>
                             </div>
                             {/* only if its an owner */}
-                            { isOwner &&
+                            {isOwner &&
                                 (
                                     <div className={style.post__controls}>
                                         <div className={cn(style.iconControl)}>
                                             <img src={edit} alt=""/>
                                         </div>
-                                        <div className={cn(style.iconControl)}>
+                                        <div className={cn(style.iconControl)} onClick={clickDeleteHandler}>
                                             <img src={close} alt=""/>
                                         </div>
                                     </div>

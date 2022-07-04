@@ -6,7 +6,7 @@ import {fetchAllPosts} from "../../store/actions/postActions";
 
 
 const Posts = (props) => {
-    const { posts : { items : { data }, status } }  = useSelector( state => state.posts )
+    const { posts : { items , status } }  = useSelector( state => state.posts )
     const userData = useSelector( state => state.auth.data )
 
     const dispatch = useDispatch()
@@ -15,11 +15,10 @@ const Posts = (props) => {
     },[dispatch])
 
     if ( status === "loading" ) return <div>Loading..</div>
-    console.log(userData?._id)
     return (
         <div className={style.posts}>
             {
-                data.map(  post => (
+                items.map(  post => (
                     <Post key={post._id} data={post} isOwner={userData?._id === post.user._id}/>
                 ))
             }

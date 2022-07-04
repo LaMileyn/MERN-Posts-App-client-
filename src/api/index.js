@@ -23,6 +23,9 @@ export class PostsApi{
     static async addPost(data){
         return await instance.post(`/posts`,data)
     }
+    static async deletePost(id){
+        return await instance.delete(`/posts/${id}`)
+    }
 }
 export class AuthApi{
     static async login(data){

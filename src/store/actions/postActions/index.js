@@ -8,3 +8,9 @@ export const fetchAllPosts = createAsyncThunk(
         return data
     }
 )
+export const fetchDeletePost = createAsyncThunk(
+    "posts/deleteOne",
+    async (id) => (
+        await PostsApi.deletePost(id)
+    )
+)
