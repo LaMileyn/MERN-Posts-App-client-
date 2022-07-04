@@ -20,8 +20,14 @@ export class PostsApi{
     static async getOnePost(id){
         return await instance.get(`/posts/${id}`)
     }
+    static async updatePost(id,fields){
+        return await instance.patch(`/posts/${id}`,fields)
+    }
     static async addPost(data){
         return await instance.post(`/posts`,data)
+    }
+    static async deletePost(id){
+        return await instance.delete(`/posts/${id}`)
     }
 }
 export class AuthApi{

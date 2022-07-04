@@ -16,14 +16,13 @@ const PostPage = (props) => {
     useEffect(() => {
         PostsApi.getOnePost(id)
             .then(res => {
-                console.log(res)
                 setPostData(res.data)
             })
     }, [id])
     return (
         <section className={style.postPage}>
             <div className={style.container}>
-                <Post data={postData} noLink={true} isOwner={userData?._id === postData?.user._id}/>
+                <Post data={postData} noLink={true} isOwner={userData?._id === postData?.user._id} />
                 <HomeComments/>
             </div>
         </section>
