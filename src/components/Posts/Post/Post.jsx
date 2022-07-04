@@ -2,7 +2,7 @@ import React from 'react';
 import views from "../../../assets/icons/view.png";
 import comments from "../../../assets/icons/commentt.png";
 import style from './index.module.scss'
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import cn from 'classnames';
 import close from '../../../assets/icons/close.png'
 import edit from '../../../assets/icons/edit.png'
@@ -20,6 +20,7 @@ const Post = ({data, noLink, isOwner}) => {
             dispatch(fetchDeletePost(data._id))
         }
     }
+    const navigate = useNavigate()
 
     if (!data) return "Loading..."
 
@@ -51,7 +52,7 @@ const Post = ({data, noLink, isOwner}) => {
                             {isOwner &&
                                 (
                                     <div className={style.post__controls}>
-                                        <div className={cn(style.iconControl)}>
+                                        <div className={cn(style.iconControl)} onClick={ () => navigate(`/posts/${data._id}/edit`)}>
                                             <img src={edit} alt=""/>
                                         </div>
                                         <div className={cn(style.iconControl)} onClick={clickDeleteHandler}>
@@ -65,8 +66,13 @@ const Post = ({data, noLink, isOwner}) => {
                         <div className={style.post__title}>
                             {
                                 noLink
-                                    ? data.text
-                                    : <Link to={`/posts/${data._id}`}>{data.text}</Link>
+                                    ? data.title
+                                    : <Link to={`/posts/${data._id}`}>{data.title}</Link>
+                            }
+                        </div>
+                        <div className={style.post__text}>
+                            {
+                                data.text
                             }
                         </div>
                         <div className={style.post__tags}>

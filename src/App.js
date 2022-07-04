@@ -23,8 +23,9 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<MainLayout />}>
                     <Route index element={<HomePage/>}/>
-                    <Route path="posts" element={<div>Главная страница статей</div>}/>
+                    <Route path="posts" element={<HomePage/>}/>
                     <Route path="posts/:id" element={<PostPage />}/>
+                    <Route path="posts/:id/edit" element={<AddPostPage/>}/>
                     <Route path="add-post" element={<AddPostPage/>}/>
                     <Route path="login" element={<LoginPage/>}/>
                     <Route path="register" element={<RegisterPage/>}/>
